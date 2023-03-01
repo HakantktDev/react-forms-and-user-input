@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameIsTouched, setEnteredNameIsTouched] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() !== "";
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameIsTouched;
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -12,11 +13,6 @@ const SimpleInput = (props) => {
 
   const nameInputBlurHandler = (event) => {
     setEnteredNameIsTouched(true);
-
-    if (enteredName.trim() === "") {
-      setEnteredNameIsValid(false);
-      return;
-    }
   };
 
   const formSubmissionHandler = (event) => {
@@ -24,17 +20,14 @@ const SimpleInput = (props) => {
 
     setEnteredNameIsTouched(true);
 
-    if (enteredName.trim() === "") {
-      setEnteredNameIsValid(false);
+    if (!enteredNameIsValid) {
       return;
     }
-    setEnteredNameIsValid(true);
 
     //nameInputRef.current.value = ""; not ideal manuplation DOM directly!!!
     setEnteredName("");
+    setEnteredNameIsTouched(false);
   };
-
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameIsTouched;
 
   const nameInputClasses = nameInputIsInvalid ? "invalid" : "";
 
@@ -47,7 +40,6 @@ const SimpleInput = (props) => {
           id="name"
           onChange={nameInputChangeHandler}
           onBlur={nameInputBlurHandler}
-          ref={nameInputRef}
           value={enteredName}
         />
         {nameInputIsInvalid && <p className="error-text">Please enter a valid name</p>}
