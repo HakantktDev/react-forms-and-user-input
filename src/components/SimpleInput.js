@@ -17,7 +17,7 @@ const SimpleInput = (props) => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
-  } = useInput((value) => value.trim() !== "" && value.includes("@"));
+  } = useInput((value) => value.includes("@"));
 
   let formIsValid = false;
 
