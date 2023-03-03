@@ -1,4 +1,4 @@
-import useInput from "../hooks/use-input";
+import useInput from '../hooks/use-input';
 
 const SimpleInput = (props) => {
   const {
@@ -8,7 +8,7 @@ const SimpleInput = (props) => {
     valueChangeHandler: nameChangedHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== '');
 
   const {
     value: enteredEmail,
@@ -17,7 +17,7 @@ const SimpleInput = (props) => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
-  } = useInput((value) => value.includes("@"));
+  } = useInput((value) => value.includes('@'));
 
   let formIsValid = false;
 
@@ -36,9 +36,9 @@ const SimpleInput = (props) => {
     }
   };
 
-  const nameInputClasses = nameInputHasError ? "invalid" : "";
+  const nameInputClasses = nameInputHasError ? 'invalid' : '';
 
-  const emailInputClasses = emailInputHasError ? "invalid" : "";
+  const emailInputClasses = emailInputHasError ? 'invalid' : '';
 
   return (
     <form onSubmit={formSubmissionHandler}>

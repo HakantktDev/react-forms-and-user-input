@@ -1,7 +1,7 @@
-import useInput from "../hooks/use-input";
+import useInput from '../hooks/use-input';
 
-const isNotEmpty = (value) => value.trim() !== "";
-const isEmail = (value) => value.includes("@");
+const isNotEmpty = (value) => value.trim() !== '';
+const isEmail = (value) => value.includes('@');
 
 const BasicForm = (props) => {
   const {
@@ -41,7 +41,7 @@ const BasicForm = (props) => {
       return;
     }
 
-    console.log("Submitted!");
+    console.log('Submitted!');
     console.log(firstNameValue, lastNameValue, emailValue);
 
     resetFirstName();
@@ -49,9 +49,9 @@ const BasicForm = (props) => {
     resetEmail();
   };
 
-  const firstNameClasses = firstNameHasError ? "form-control invalid" : "form-control";
-  const lastNameClasses = lastNameHasError ? "form-control invalid" : "form-control";
-  const emailClasses = emailHasError ? "form-control invalid" : "form-control";
+  const firstNameClasses = firstNameHasError ? 'form-control invalid' : 'form-control';
+  const lastNameClasses = lastNameHasError ? 'form-control invalid' : 'form-control';
+  const emailClasses = emailHasError ? 'form-control invalid' : 'form-control';
 
   return (
     <form onSubmit={submitHandler}>
